@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The GEO App</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+
+</head>
+<body>
+
+    {% load static %}
+
+    {% include "main_app/navbar.html" %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                
+                <a href="{% url 'continents' %}">
+                    <img src="{% static 'main_app/continents.jpg' %}" alt="Continents" style="width:350px;height:300px;">
+                    <div class="caption">
+                        <p>Continents</p>
+                    </div>
+                </a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <a href="#">
+                    <img src="{% static 'main_app/countries.jpg' %}" alt="Countries" style="width:350px;height:300px;">
+                    <div class="caption">
+                        <p>Countries</p>
+                    </div>
+                </a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="thumbnail">
+                <a href="#">
+                    <img src="{% static 'main_app/cities.jpeg' %}" alt="Cities" style="width:350px;height:300px;">
+                    <div class="caption">
+                        <p>Cities</p>
+                    </div>
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The GEO App</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>     
+
+    <script>
+        function editContinent(continentId) {
+            location.href='/continents/editContinent/' + continentId;
+        }
+
+        function deleteContinent(continentId) {
+            location.href='/continents/deleteContinent/' + continentId;
+        }
+
+        function viewCountriesPerContinent(continentId) {
+            location.href='/countries/?continentId=' + continentId;
+        }        
+    </script>
+</head>
+<body>
+
+    {% include "main_app/navbar.html" %}
+
+    <div class="container">
+        <div class="panel panel-success">
+            <div class="panel-heading">Continents</div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Countries</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% if continents_list %}
+                        {% for continent in continents_list %}
+                            <tr>
+                                <td width="40%">{{ continent.name }}</td>
+                                <td width="20%">
+                                    <input type="button" value="Countries" class="btn btn-info" onclick="viewCountriesPerContinent('{{continent.id}}')" />
+                                </td>                                
+                                <td width="20%">
+                                    <input type="button" value="Edit" class="btn btn-warning" onclick="editContinent('{{continent.id}}')" />
+                                </td>
+                                <td width="20%">
+                                    <input type="button" value="Delete" class="btn btn-danger" onclick="deleteContinent('{{continent.id}}')" />
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="3">No records available.</td>
+                        </tr>
+                    {% endif %}                    
+                </table>
+                    
+                <br/>
+                <input type="button" value="Add" class="btn btn-primary" onclick="location.href='addContinent'" />&nbsp;
+                <input type="button" value="Main" class="btn btn-primary" onclick="location.href='/'" />                    
+
+            </div>
+        </div>    
+    </div>
+
+</body>
+</html>

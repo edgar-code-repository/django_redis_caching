@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The GEO App</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+
+    <script>
+        function saveContinent() {
+            if ($("#name").val() == "") {
+                alert("You must enter name for continent");
+                $("#name").focus();
+                return;
+            }
+
+            $("#continent-form").submit();
+        }
+    </script>
+</head>
+<body>
+
+    {% include "main_app/navbar.html" %}
+
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">Add Continent</div>
+            <div class="panel-body">
+                <form name="continent-form" id="continent-form" action="" method="POST">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" name="name" id="name">
+                    </div>    
+                    <br/>
+                    
+                    <input type="button" value="Save" class="btn btn-primary" onclick="saveContinent()" />&nbsp;
+                    <input type="button" value="Cancel" class="btn btn-success" onclick="location.href='/continents'"/>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
