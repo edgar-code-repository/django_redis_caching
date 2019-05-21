@@ -42,17 +42,22 @@ Pantalla principal de la sección Continents:
 
 Se revisan las llaves almacenadas en Redis por medio de redis-cli:
 
-![Screenshot Keys](screenshots/redis-cli-all-keys.png)
+![Screenshot Keys](screenshots/redis-cli-keys.png)
 
 --------------------------------------------------------------------------------------------------------------------
 
 Si bien la cantidad de registros en la vista continentes es pequeña, al realizar la comparación de rendimiento 
-con loadtest, la cache tiene una mejor performance que el acceso a base de datos: 
+con loadtest, la cache tiene una mejor performance que el acceso a base de datos.
+
+Rendimiento usando solo base de datos:
 
 ![Screenshot Bd](screenshots/loadtest-using-db.png)
+
+Rendimiento usando solo cache Redis:
 
 ![Screenshot Cache](screenshots/loadtest-using-cache.png)
 
 --------------------------------------------------------------------------------------------------------------------
 
-Github repository:  https://brightdog@bitbucket.org/brightdog/the_geo_app
+Github repository:  https://github.com/edgar-code-repository/django_redis_caching
+
