@@ -1,4 +1,4 @@
-THE GEO APP
+THE GEO APP (WITH REDIS)
 --------------------------------------------------------------------------------------------------------------------
 
 Aplicación web desarrollada con Django 2.2 que almacena información de continentes, paises y ciudades.
@@ -10,9 +10,35 @@ Redis, disminuyendo la cantidad de accesos a base de datos.
 
 --------------------------------------------------------------------------------------------------------------------
 
-En este proyecto se instaló la librería para redis "django-redis" y se modificó la siguiente configuración en archivo settings:
+**Se debe definir la variable de ambiente "DATABASE_URL" que es utilizada**
+**por la librería dj-database-url para acceder a la base de datos:**
 
-```python
+```
+
+DATABASE_URL="postgres://user:password@localhost/nombre-db"
+
+```
+
+**Configuración de base de datos PostgreSQL en archivo setting.py:**
+
+```
+import dj_database_url
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    }
+}
+
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+
+```
+
+--------------------------------------------------------------------------------------------------------------------
+
+**Configuración de Redis en archivo settings:**
+
+```
 
 CACHES = {
     'default': {
@@ -59,5 +85,4 @@ Rendimiento usando solo cache Redis:
 
 --------------------------------------------------------------------------------------------------------------------
 
-Github repository:  https://github.com/edgar-code-repository/django_redis_caching
 
